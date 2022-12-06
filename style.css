@@ -51,7 +51,7 @@ ul {
     text-align: center;
     color: white;
 /*     animation: 5s slide-right; */
-/*     overflow: hidden; */
+   overflow: hidden; 
     background-color: rgb(51, 102, 255);
     
 }
