@@ -1,5 +1,5 @@
 * {
-    margin: 0;
+    margin: 7px;
     padding: 0;
     box-sizing: border-box;
 /*     font-size: large; */
@@ -50,9 +50,11 @@ ul {
 
 .header-upper {
     text-align: center;
+    color: white;
     animation: 5s slide-right;
     overflow: hidden;
-    background-color: aqua;
+    background-color: rgb(51, 102, 255);
+    
 }
 
 @keyframes slide-right {
@@ -75,6 +77,7 @@ ul {
 }
 .footer {
     border: var(--border-width) solid black;
+    text-align: center;
     padding: 5px 5px 0px 5px;
     margin: 5px 5px 0px 5px;
     background-color: rgb(153, 204, 255);
