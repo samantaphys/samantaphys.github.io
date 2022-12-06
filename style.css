@@ -103,7 +103,7 @@ ul {
 
 .header-text {
     padding: 7px;
-/*     font-family: 'Times New Roman'; */
+   font-family: 'Roboto'; 
 }
 
 .header-text ul li h1 {
@@ -111,7 +111,7 @@ ul {
 }
 
 .header-text ul li p {
-/*     font-family: monospace; */
+  font-family: 'Roboto'; 
     font-size: 1.1rem;
 }
 
