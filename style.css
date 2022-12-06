@@ -47,10 +47,21 @@ ul {
     font-size: small;
 }
 
+.header-upper-2 {
+    text-align: center;
+    color: white;
+/*     animation: 5s slide-right; */
+/*     overflow: hidden; */
+    background-color: rgb(51, 102, 255);
+    
+}
+
+
+
 
 .header-upper {
     text-align: center;
-    text-color: white;
+    color: white;
     animation: 5s slide-right;
     overflow: hidden;
     background-color: rgb(51, 102, 255);
