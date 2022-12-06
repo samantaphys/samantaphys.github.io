@@ -1,5 +1,5 @@
 * {
-    margin: 7px;
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
 /*     font-size: large; */
@@ -50,7 +50,7 @@ ul {
 
 .header-upper {
     text-align: center;
-    color: white;
+    text-color: white;
     animation: 5s slide-right;
     overflow: hidden;
     background-color: rgb(51, 102, 255);
@@ -78,6 +78,7 @@ ul {
 .footer {
     border: var(--border-width) solid black;
     text-align: center;
+    font-size: small;
     padding: 5px 5px 0px 5px;
     margin: 5px 5px 0px 5px;
     background-color: rgb(153, 204, 255);
