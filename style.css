@@ -116,6 +116,9 @@ ul {
     font-size: 1.1rem;
 }
 
+.main-content ul li h1 {
+    font-size: 1.15rem; 
+}
 
 
 /* button { 
