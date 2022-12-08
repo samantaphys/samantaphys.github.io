@@ -10,7 +10,7 @@
 .full-page {
     display: grid;
     min-height: 100vh;
-    grid-template-rows: min-content auto;
+    grid-template-rows: min-content auto min-content;
     width: 100%;
     /* background-color: red; */
 }
@@ -21,7 +21,7 @@ ul {
 
 .full-page .content {
     display: grid;
-    grid-template-columns: min-content auto;
+    grid-template-columns: auto auto;
 }
 
 .sidebar {
