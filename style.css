@@ -21,15 +21,15 @@ ul {
 
 .full-page .content {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: min-content auto;
 }
 
 .sidebar {
-    border-right: var(--border-width) solid black;
+    border-right: var(--border-width) solid LightGray;
 }
 
 .sidebar .sidebar-list {
-    padding: 10px 7px 70px 8px;
+    padding: 20px 10px 100px 8px;
     /* border-bottom: var(--border-width) solid black; */
 }
 
@@ -39,7 +39,7 @@ ul {
 }
 
 .empty-col2 {
-    border-top: var(--border-width) solid Gray;
+    border-top: var(--border-width) solid LightGray;
     padding: 5px;
 }
 
@@ -49,10 +49,10 @@ ul {
 
 .header-upper-2 {
     text-align: center;
-    color: white;
+    color: ForestGreen;
 /*     animation: 5s slide-right; */
    overflow: hidden; 
-    background-color: rgb(30, 144, 255);
+    background-color: LightGray;
     
 }
 
@@ -81,18 +81,18 @@ ul {
 }
 
 .header {
-    border: var(--border-width) solid Gainsboro;
+    border: var(--border-width) solid LightGray;
     padding: 5px 5px 0px 5px;
 /*     margin: 5px 5px 0px 5px; */
     background-color: LightGray;
 }
 .footer {
-    border: var(--border-width) solid hsl(0, 0%, 87%);
+    border: var(--border-width) solid LightGray;
     text-align: center;
     font-size: small;
     padding: 5px 5px 5px 5px;
 /*     margin: 5px 5px 5px 5px; */
-    background-color: hsl(0, 0%, 90%);
+    background-color: LightGray;
 }
 
 .header-lower {
@@ -118,7 +118,7 @@ ul {
 
 
 
-button {
+/* button { 
     background-color: rgb(51, 102, 255);
     color: white;
     border-radius: 5px;
@@ -126,7 +126,7 @@ button {
     padding: 5px 10px;
 }
 
-
+*/
 /* @media screen and (min-width: 400px) {
     .header-lower {
         display: grid;
@@ -139,7 +139,8 @@ button {
 } */
 
 img {
-    height: 5rem;
+    height: 7rem;
+     width: 5rem;
 }
 
 .footer {
