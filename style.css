@@ -39,7 +39,7 @@ ul {
 }
 
 .empty-col2 {
-    border-top: var(--border-width) solid black;
+    border-top: var(--border-width) solid Gray;
     padding: 5px;
 }
 
@@ -64,7 +64,7 @@ ul {
     color: white;
     animation: 5s slide-right;
     overflow: hidden;
-    background-color: rgb(30, 144, 255);
+    background-color: LightGray;
     
 }
 
@@ -81,18 +81,18 @@ ul {
 }
 
 .header {
-    border: var(--border-width) solid black;
+    border: var(--border-width) solid LightGray;
     padding: 5px 5px 0px 5px;
-    margin: 5px 5px 0px 5px;
-    background-color: rgb(135, 206, 235);
+/*     margin: 5px 5px 0px 5px; */
+    background-color: LightGray;
 }
 .footer {
-    border: var(--border-width) solid black;
+    border: var(--border-width) solid LightGray;
     text-align: center;
     font-size: small;
     padding: 5px 5px 5px 5px;
-    margin: 5px 5px 5px 5px;
-    background-color: rgb(135, 206, 235);
+/*     margin: 5px 5px 5px 5px; */
+    background-color: LightGray;
 }
 
 .header-lower {
@@ -143,7 +143,7 @@ img {
 
 .footer {
     margin-top: 0;
-    margin-bottom: 5px;
+/*     margin-bottom: 5px; */
 }
 
 
