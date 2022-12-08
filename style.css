@@ -61,7 +61,7 @@ ul {
 
 .header-upper {
     text-align: center;
-    color: white;
+    color: ForestGreen;
     animation: 5s slide-right;
     overflow: hidden;
     background-color: LightGray;
@@ -84,7 +84,7 @@ ul {
     border: var(--border-width) solid Gainsboro;
     padding: 5px 5px 0px 5px;
 /*     margin: 5px 5px 0px 5px; */
-    background-color: Gainsboro;
+    background-color: LightGray;
 }
 .footer {
     border: var(--border-width) solid hsl(0, 0%, 87%);
@@ -98,6 +98,7 @@ ul {
 .header-lower {
     margin-top: 5px;
     display: grid;
+    color: DarkBlue;
     grid-template-columns: min-content auto  min-content;
 }
 
