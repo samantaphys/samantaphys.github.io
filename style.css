@@ -81,18 +81,18 @@ ul {
 }
 
 .header {
-    border: var(--border-width) solid LightGray;
+    border: var(--border-width) solid Gainsboro;
     padding: 5px 5px 0px 5px;
 /*     margin: 5px 5px 0px 5px; */
-    background-color: LightGray;
+    background-color: Gainsboro;
 }
 .footer {
-    border: var(--border-width) solid LightGray;
+    border: var(--border-width) solid hsl(0, 0%, 87%);
     text-align: center;
     font-size: small;
     padding: 5px 5px 5px 5px;
 /*     margin: 5px 5px 5px 5px; */
-    background-color: LightGray;
+    background-color: hsl(0, 0%, 90%);
 }
 
 .header-lower {
