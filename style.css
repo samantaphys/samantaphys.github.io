@@ -1,0 +1,136 @@
+/**
+* Last update: May 7, 2023
+* Author: Subrata Samanta
+*/
+
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+
+* {
+    margin: 0;
+    padding: 0;
+} 
+
+p {
+text-align: justify;
+}
+
+
+a {
+  color: #2487ce;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #469fdf;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Raleway", sans-serif;
+}
+
+ul {
+    list-style: none;
+}
+
+/*--------------------------------------------------------------
+# body
+--------------------------------------------------------------*/
+
+.full-page {
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: min-content auto min-content;
+}
+
+.content {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 768px; /* max width of body text */ 
+}
+
+.main-content ul li h1 {
+    font-size: 1.15rem; 
+}
+
+/*--------------------------------------------------------------
+# header and footer
+--------------------------------------------------------------*/
+
+.header {
+    padding: 15px 10px;
+   background-color: #f3f9fd;
+}
+
+
+.header p {
+text-align: center;
+}
+
+.footer {
+    padding: 15px 10px;
+   background-color: #f3f9fd;
+}
+
+/*--------------------------------------------------------------
+# box (with color) and unbox (without color}
+--------------------------------------------------------------*/
+
+.box {
+    padding: 15px 10px;
+   background-color: #f3f9fd;
+}
+
+.unbox {
+    padding: 15px 10px;
+}
+
+.unbox ul li h1 {
+    font-size: 1.15rem;
+    color: #124265; 
+}
+
+.box ul li h1 {
+    font-size: 1.15rem;
+    color: #124265; 
+}
+
+.footer {
+    padding: 15px 10px;
+   background-color: #f3f9fd;
+}
+
+
+
+/*--------------------------------------------------------------
+# image
+--------------------------------------------------------------*/
+
+.img-warp-right {
+    width: 30vw;
+    height: 25vw;
+    float: right;
+  margin-left: 1vw;
+}
+
+
+.img-warp-left {
+    float: left;
+  margin-right: 1vw;
+}
+
+
+/*--------------------------------------------------------------
+# end
+--------------------------------------------------------------*/
+
+
+
+
