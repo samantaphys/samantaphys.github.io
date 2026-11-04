@@ -127,7 +127,7 @@ img {
 .navbar {
   display: flex;
   gap: 4px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .navbar a {
@@ -137,6 +137,7 @@ img {
   padding: 6px 12px;
   border-radius: 6px;
   border: 0;
+  white-space: nowrap;
 }
 
 .navbar a:hover {
@@ -854,6 +855,42 @@ a.chip:hover {
 # Phones and small screens
 --------------------------------------------------------------*/
 
+/* Header on tablets and phones: name on top, all five links on one line */
+@media (max-width: 760px) {
+  html { scroll-padding-top: 96px; }
+
+  .header-inner {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: 2px;
+    padding: 8px 10px 6px;
+    min-height: 0;
+  }
+
+  .brand {
+    text-align: center;
+    font-size: 1.05rem;
+  }
+
+  .navbar {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .navbar::-webkit-scrollbar { display: none; }
+
+  .navbar a {
+    flex: 0 0 auto;
+    font-size: clamp(.74rem, 3.4vw, .92rem);
+    padding: 6px clamp(4px, 1.8vw, 12px);
+  }
+}
+
 @media (max-width: 760px) {
   .card { padding: 22px 18px; }
   .hero { grid-template-columns: 1fr; text-align: center; gap: 18px; }
@@ -861,7 +898,6 @@ a.chip:hover {
   .hero h1 { font-size: 1.9rem; }
   .contact { align-items: center; }
   .two-col { grid-template-columns: 1fr; }
-  .header-inner { justify-content: center; padding: 8px 16px; }
   #slidy img { height: 260px; }
   #slidy figcaption { font-size: .85rem; padding: 28px 48px 30px; }
 }
