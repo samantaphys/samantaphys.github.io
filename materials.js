@@ -78,17 +78,24 @@ var COURSES = [
 
       // ---- Physics Through Computational Thinking (2026) ----
       { group: 'Physics Through Computational Thinking (Jan – Mar 2026)', title: 'Lecture videos (YouTube playlist)', type: 'video', file: 'https://youtube.com/playlist?list=PL3Pnr6ak_w9DLyxfU4KqLH6EvAldVGYt1&si=0HpPM_2wTcNsJbm9' },
-       { group: 'Physics Through Computational Thinking (Jan – Mar 2026)', title: 'Week 1 notebook', type: 'notebook', file: 'teaching/nptel/ptct/week01.nb', date: '2026-01-10' },
-       { group: 'Physics Through Computational Thinking (Jan – Mar 2026)', title: 'Week 1 supplement', type: 'supplement', file: 'teaching/nptel/ptct/week01-supplement.pdf', date: '2026-01-10' },
+       { group: 'Physics Through Computational Thinking (Jan – Mar 2026)', title: 'Week 1 notebook', type: 'notebook', file: 'week1.nb', date: '2026-01-27' },
+       { group: 'Physics Through Computational Thinking (Jan – Mar 2026)', title: 'Week 2 notebook', type: 'notebook', file: 'week2.nb', date: '2026-02-03' },
+       { group: 'Physics Through Computational Thinking (Jan – Mar 2026)', title: 'Week 3 notebook', type: 'notebook', file: 'week3.nb', date: '2026-02-10' },
+       { group: 'Physics Through Computational Thinking (Jan – Mar 2026)', title: 'Week 4 notebook', type: 'notebook', file: 'week4.nb', date: '2026-02-17' },
+       { group: 'Physics Through Computational Thinking (Jan – Mar 2026)', title: 'Week 5 notebook', type: 'notebook', file: 'week5.nb', date: '2026-02-24' },
+       { group: 'Physics Through Computational Thinking (Jan – Mar 2026)', title: 'Week 6 notebook', type: 'notebook', file: 'week6.nb', date: '2026-03-03' },
+       { group: 'Physics Through Computational Thinking (Jan – Mar 2026)', title: 'Week 7 notebook', type: 'notebook', file: 'week7.nb', date: '2026-03-10' },
+       { group: 'Physics Through Computational Thinking (Jan – Mar 2026)', title: 'Week 8 notebook', type: 'notebook', file: 'week8.nb', date: '2026-03-17' },
+       // { group: 'Physics Through Computational Thinking (Jan – Mar 2026)', title: 'Week 1 supplement', type: 'supplement', file: 'teaching/nptel/ptct/week01-supplement.pdf', date: '2026-01-10' },
 
       // ---- Thermal Physics (2025) ----
       { group: 'Thermal Physics (Jan – Apr 2025)', title: 'Lecture videos (YouTube playlist)', type: 'video', file: 'https://youtube.com/playlist?list=PL3Pnr6ak_w9DrJL07yldM3_AOdmDhWLDQ&si=4Yo0eI4tHgPmMnmE' },
-      { group: 'Thermal Physics (Jan – Apr 2025)', title: 'Supplementary notes', type: 'supplement', file: 'teaching/nptel/thermal2025/supplement-01.pdf', date: '2025-02-01' },
-      { group: 'Thermal Physics (Jan – Apr 2025)', title: 'Mathematica notebook', type: 'notebook', file: 'teaching/nptel/thermal2025/notebook-01.nb', date: '2025-02-01' },
+      // { group: 'Thermal Physics (Jan – Apr 2025)', title: 'Supplementary notes', type: 'supplement', file: 'teaching/nptel/thermal2025/supplement-01.pdf', date: '2025-02-01' },
+      // { group: 'Thermal Physics (Jan – Apr 2025)', title: 'Mathematica notebook', type: 'notebook', file: 'teaching/nptel/thermal2025/notebook-01.nb', date: '2025-02-01' },
 
       // ---- Thermal Physics (2023) ----
       { group: 'Thermal Physics (Jan – Apr 2023)', title: 'Lecture videos (YouTube playlist)', type: 'video', file: 'https://youtube.com/playlist?list=PL3Pnr6ak_w9CI_XbhUJ6ZftAkw7QAK9lH&feature=shared' },
-      { group: 'Thermal Physics (Jan – Apr 2023)', title: 'Supplementary notes', type: 'supplement', file: 'teaching/nptel/thermal2023/supplement-01.pdf', date: '2023-02-01' },
+      // { group: 'Thermal Physics (Jan – Apr 2023)', title: 'Supplementary notes', type: 'supplement', file: 'teaching/nptel/thermal2023/supplement-01.pdf', date: '2023-02-01' },
 
     ]
   },
