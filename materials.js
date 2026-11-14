@@ -51,13 +51,13 @@ var COURSES = [
 
       // ---- Electromagnetism ----
        // { group: 'Electromagnetism', title: 'Lecture 1: Vector analysis', type: 'notes', file: 'teaching/bcc/mathphys1/lecture-01.pdf', date: '2026-11-14' },
-       { group: 'Electromagnetism', title: 'Mocktest', type: 'problems', file: 'mocktest_EM.pdf', date: '2026-11-14' },
+       { group: 'Electromagnetism', title: 'Mocktest-II', type: 'problems', file: 'mocktest_EM.pdf', date: '2026-08-20' },
        // { group: 'Mathematical Physics I', title: 'Solutions to Problem Set 1', type: 'solutions', file: 'teaching/bcc/mathphys1/ps-01-solutions.pdf', date: '2026-11-21' },
 
       // ---- Mechanics ----
        // { group: 'Mechanics', title: 'Lecture 1: Newtonian mechanics', type: 'notes', file: 'teaching/bcc/mechanics/lecture-01.pdf', date: '2026-11-14' },
-       // { group: 'Mechanics', title: 'Problem Set 1', type: 'problems', file: 'teaching/bcc/mechanics/ps-01.pdf', date: '2026-11-14' },
-
+        { group: 'Mechanics', title: 'Mocktest-I', type: 'problems', file: 'mocktest_CM.pdf', date: '2026-07-21' },
+        { group: 'Mechanics', title: 'Mocktest-I Solutions', type: 'solutions', file: 'mocktest_CM_solutions.pdf', date: '2026-07-28' },
     ]
   },
 
