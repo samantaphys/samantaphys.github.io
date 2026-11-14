@@ -57,7 +57,7 @@ var COURSES = [
       // ---- Mechanics ----
        // { group: 'Mechanics', title: 'Lecture 1: Newtonian mechanics', type: 'notes', file: 'teaching/bcc/mechanics/lecture-01.pdf', date: '2026-11-14' },
         { group: 'Mechanics', title: 'Mocktest-I', type: 'problems', file: 'mocktest_CM.pdf', date: '2026-07-21' },
-        { group: 'Mechanics', title: 'Mocktest-I Solutions', type: 'solutions', file: 'mocktest_CM_solutions.pdf', date: '2026-07-28' },
+        { group: 'Mechanics', title: 'Mocktest-I solutions', type: 'solutions', file: 'mocktest_CM_solutions.pdf', date: '2026-07-28' },
     ]
   },
 
