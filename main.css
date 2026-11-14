@@ -71,7 +71,7 @@ a:hover {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Source Serif 4", Georgia, serif;
+  font-family: "Inter", system-ui, sans-serif;
   color: var(--navy);
   line-height: 1.25;
 }
@@ -111,7 +111,7 @@ img {
 }
 
 .brand {
-  font-family: "Merriweather", Georgia, serif;
+  font-family: "Inter", system-ui, sans-serif;
   font-weight: 700;
   font-size: 1.15rem;
   letter-spacing: .02em;
@@ -849,6 +849,218 @@ a.chip:hover {
   font-size: 1.5rem;
   line-height: 1;
   cursor: pointer;
+}
+
+/*--------------------------------------------------------------
+# Teaching materials page (teaching.html)
+--------------------------------------------------------------*/
+
+.navbar a.active {
+  background: rgba(255, 255, 255, .14);
+  color: #fff;
+}
+
+.tm-back {
+  display: inline-block;
+  font-size: .9rem;
+  margin-bottom: 8px;
+}
+
+.tm-heading {
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 900;
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.tm-intro p {
+  text-align: left;
+  color: var(--muted);
+}
+
+.tm-tools {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.tm-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tm-filter {
+  padding: 5px 13px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--navy);
+  font: 500 .86rem "Inter", system-ui, sans-serif;
+  cursor: pointer;
+  transition: background .2s, border-color .2s, color .2s;
+}
+
+.tm-filter:hover {
+  border-color: var(--accent);
+}
+
+.tm-filter.on {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.tm-search {
+  flex: 0 1 240px;
+  min-width: 0;
+  padding: 7px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font: .92rem "Inter", system-ui, sans-serif;
+  color: var(--ink);
+  background: #fff;
+}
+
+.tm-search:focus {
+  outline: 2px solid var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.tm-course-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  padding-bottom: 12px;
+  margin-bottom: 6px;
+  border-bottom: 2px solid var(--accent-soft);
+}
+
+.tm-course-title {
+  font-size: 1.3rem;
+}
+
+.tm-course-meta {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: .92rem;
+}
+
+.tm-term {
+  flex-shrink: 0;
+  color: var(--muted);
+  font-size: .86rem;
+  white-space: nowrap;
+  padding-top: 4px;
+}
+
+.tm-now {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 6px;
+  padding: 1px 9px;
+  border-radius: 999px;
+  background: #e6f4ea;
+  color: #1e7b3a;
+  border: 1px solid #b7dfc3;
+  font: 600 .7rem "Inter", system-ui, sans-serif;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.tm-about {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: .94rem;
+  text-align: left;
+}
+
+.tm-list {
+  margin-top: 4px;
+}
+
+.tm-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--line);
+}
+
+.tm-item:last-child {
+  border-bottom: 0;
+}
+
+.tm-type {
+  flex-shrink: 0;
+  min-width: 78px;
+  text-align: center;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font: 600 .74rem "Inter", system-ui, sans-serif;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+}
+
+.t-notes     { background: #e8eff9; color: #1f4e8c; }
+.t-problems  { background: #fdf0e3; color: #a14e0b; }
+.t-solutions { background: #e6f4ea; color: #1e7b3a; }
+.t-slides    { background: #f1ebfa; color: #6a3fa0; }
+.t-video     { background: #fdecec; color: #b31b1b; }
+.t-notebook  { background: #fff1e0; color: #c4400f; }
+.t-supplement{ background: #e5f5f6; color: #0f6f78; }
+
+.tm-group {
+  margin: 18px 0 2px;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.tm-group:first-child {
+  margin-top: 8px;
+}
+.t-other     { background: #eef0f3; color: #4a5160; }
+
+.tm-link {
+  flex: 1;
+  min-width: 0;
+  font-weight: 500;
+}
+
+.tm-meta {
+  flex-shrink: 0;
+  color: var(--muted);
+  font-size: .82rem;
+  white-space: nowrap;
+}
+
+.tm-empty {
+  padding: 10px 0 2px;
+  color: var(--muted);
+  font-style: italic;
+  text-align: left;
+}
+
+.tm-none {
+  text-align: center;
+  color: var(--muted);
+  padding: 20px 0;
+}
+
+@media (max-width: 600px) {
+  .tm-heading { font-size: 1.6rem; }
+  .tm-search { flex: 1 1 100%; }
+  .tm-course-head { flex-direction: column; gap: 2px; }
+  .tm-term { padding-top: 0; }
+  .tm-item { flex-wrap: wrap; gap: 4px 10px; }
+  .tm-link { flex: 1 1 calc(100% - 100px); }
+  .tm-meta { flex-basis: 100%; padding-left: 88px; }
 }
 
 /*--------------------------------------------------------------

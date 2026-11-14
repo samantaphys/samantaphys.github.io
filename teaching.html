@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Subrata Samanta">
+  <title>Teaching Materials | Subrata Samanta</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
+
+  <!-- Main CSS file (same as the home page) -->
+  <link href="main.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header class="header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">Subrata's Homepage</a>
+      <nav class="navbar">
+        <a href="index.html#about">About</a>
+        <a href="index.html#research">Research</a>
+        <a href="index.html#publications">Publications</a>
+        <a href="index.html#talks">Talks</a>
+        <a href="teaching.html" class="active" aria-current="page">Teaching</a>
+      </nav>
+    </div>
+  </header><!-- End Header -->
+
+
+  <main class="main-content">
+
+    <!-- ======= Intro ======= -->
+    <section class="card tm-intro">
+      <a class="tm-back" href="index.html#teaching">&larr; Back to home</a>
+      <h1 class="tm-heading">Teaching Materials</h1>
+      <p>Here, I will upload lecture notes, problem sets, Mathematica notebooks, supplementary material and videos from the courses I teach and assist. </p>
+
+      <div class="tm-tools">
+        <div class="tm-filters" id="tm-filters" role="group" aria-label="Filter by type"></div>
+        <input class="tm-search" id="tm-search" type="search" placeholder="Search materials…" aria-label="Search materials">
+      </div>
+    </section>
+
+    <!-- ======= Courses (filled from materials.js) ======= -->
+    <div id="tm-courses"></div>
+    <p class="tm-none" id="tm-none" hidden>No materials match your search.</p>
+
+  </main>
+
+
+  <!-- ======= Footer ======= -->
+  <footer class="footer">
+    <p>&laquo; Back to <a href="index.html">home</a></p>
+    <p>&copy; 2026 Subrata Samanta, Indian Institute of Technology Kanpur</p>
+  </footer>
+
+
+  <!-- The list of courses and files -->
+  <script src="materials.js"></script>
+
+  <!-- Builds the page from materials.js -->
+  <script>
+    (function () {
+      var TYPES = {
+        notes:     { label: 'Lecture notes', short: 'Notes' },
+        problems:  { label: 'Problem sets',  short: 'Problems' },
+        solutions: { label: 'Solutions',     short: 'Solutions' },
+        slides:    { label: 'Slides',        short: 'Slides' },
+        notebook:  { label: 'Mathematica notebooks', short: 'Notebook' },
+        supplement:{ label: 'Supplements',   short: 'Supplement' },
+        video:     { label: 'Videos',        short: 'Video' },
+        other:     { label: 'Other',         short: 'File' }
+      };
+      var courses = (typeof COURSES !== 'undefined') ? COURSES : [];
+      var activeType = 'all';
+      var query = '';
+
+      function esc(s) {
+        return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+        });
+      }
+      function fileExt(f) {
+        if (/^https?:\/\//i.test(f) && !/\.[a-z0-9]{2,5}($|\?)/i.test(f)) return 'LINK';
+        var m = String(f).split('?')[0].match(/\.([a-z0-9]{2,5})$/i);
+        return m ? m[1].toUpperCase() : 'FILE';
+      }
+      function niceDate(d) {
+        if (!d) return '';
+        var p = d.split('-');
+        var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        return (p[2] ? +p[2] + ' ' : '') + (months[+p[1] - 1] || '') + ' ' + p[0];
+      }
+
+      // Filter buttons: only show types that actually have materials
+      var used = {};
+      courses.forEach(function (c) { (c.materials || []).forEach(function (m) { used[m.type || 'other'] = true; }); });
+      var fbox = document.getElementById('tm-filters');
+      var btns = ['all'].concat(Object.keys(TYPES).filter(function (t) { return used[t]; }));
+      fbox.innerHTML = btns.map(function (t) {
+        return '<button type="button" class="tm-filter' + (t === 'all' ? ' on' : '') + '" data-type="' + t + '">' +
+               (t === 'all' ? 'All' : TYPES[t].label) + '</button>';
+      }).join('');
+      fbox.addEventListener('click', function (e) {
+        var b = e.target.closest('.tm-filter'); if (!b) return;
+        activeType = b.getAttribute('data-type');
+        fbox.querySelectorAll('.tm-filter').forEach(function (x) { x.classList.toggle('on', x === b); });
+        render();
+      });
+      document.getElementById('tm-search').addEventListener('input', function (e) {
+        query = e.target.value.trim().toLowerCase(); render();
+      });
+
+      function render() {
+        var filtering = activeType !== 'all' || query;
+        var shown = 0;
+        var html = courses.map(function (c) {
+          var items = (c.materials || []).slice().sort(function (a, b) {
+            return String(b.date || '').localeCompare(String(a.date || ''));
+          }).filter(function (m) {
+            var t = m.type || 'other';
+            if (activeType !== 'all' && t !== activeType) return false;
+            if (query) {
+              var hay = (m.title + ' ' + (m.group || '') + ' ' + c.title + ' ' + c.place + ' ' + (TYPES[t] ? TYPES[t].label : '')).toLowerCase();
+              if (hay.indexOf(query) === -1) return false;
+            }
+            return true;
+          });
+          if (filtering && !items.length) return '';
+          shown++;
+
+          function itemHTML(m) {
+            var t = TYPES[m.type] ? m.type : 'other';
+            var ext = fileExt(m.file);
+            var external = /^https?:\/\//i.test(m.file);
+            // Files the browser would otherwise show as text (e.g. .nb) are downloaded instead
+            var dl = !external && ['PDF', 'HTML', 'HTM', 'PNG', 'JPG', 'JPEG', 'GIF', 'SVG'].indexOf(ext) === -1;
+            return '<li class="tm-item">' +
+              '<span class="tm-type t-' + t + '">' + TYPES[t].short + '</span>' +
+              '<a class="tm-link" href="' + esc(m.file) + '"' +
+                (external ? ' target="_blank" rel="noopener"' : '') + (dl ? ' download' : '') + '>' + esc(m.title) + '</a>' +
+              '<span class="tm-meta">' + (m.date ? esc(niceDate(m.date)) + ' &middot; ' : '') + ext + '</span>' +
+            '</li>';
+          }
+
+          // Group items by their "group" (sub-section), keeping the order groups are listed in
+          var groups = [], byGroup = {};
+          (c.groups || []).forEach(function (g) { if (!byGroup[g]) { byGroup[g] = []; groups.push(g); } });
+          items.forEach(function (m) {
+            var g = m.group || '';
+            if (!byGroup[g]) { byGroup[g] = []; groups.push(g); }
+            byGroup[g].push(m);
+          });
+
+          var list;
+          if (!items.length && !(c.groups || []).length) {
+            list = '<p class="tm-empty">Materials will be posted here soon.</p>';
+          } else {
+            list = groups.map(function (g) {
+              var gi = byGroup[g];
+              if (filtering && !gi.length) return '';
+              return (g ? '<h3 class="tm-group">' + esc(g) + '</h3>' : '') +
+                (gi.length ? '<ul class="tm-list">' + gi.map(itemHTML).join('') + '</ul>'
+                           : '<p class="tm-empty">Materials will be posted here soon.</p>');
+            }).join('');
+          }
+
+          return '<section class="card tm-course" id="' + esc(c.id) + '">' +
+            '<div class="tm-course-head">' +
+              '<div>' +
+                '<h2 class="tm-course-title">' + esc(c.title) + (c.current ? ' <span class="tm-now">Current</span>' : '') + '</h2>' +
+                '<div class="tm-course-meta">' + esc(c.role) + ' &middot; ' + esc(c.place) + '</div>' +
+              '</div>' +
+              '<div class="tm-term">' + esc(c.term) + '</div>' +
+            '</div>' +
+            (c.about ? '<p class="tm-about">' + esc(c.about) + '</p>' : '') +
+            list +
+          '</section>';
+        }).join('');
+
+        document.getElementById('tm-courses').innerHTML = html;
+        document.getElementById('tm-none').hidden = shown > 0;
+      }
+
+      render();
+    })();
+  </script>
+
+</body>
+</html>
