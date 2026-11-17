@@ -9,7 +9,7 @@
  *      paste it, and change the title / type / file / date.
  *   3. Upload this materials.js again.  Done.
  *
- * TYPES (each gets its own colour and filter button):
+ * TYPES (each gets its own symbol and filter button):
  *   'notes'      Lecture notes
  *   'problems'   Problem sets / assignments
  *   'solutions'  Solutions
@@ -19,7 +19,7 @@
  *   'video'      Videos / playlists (use a full https:// link in "file")
  *   'other'      Anything else
  *
- * "date" is optional (format YYYY-MM-DD). Newest items appear first.
+ * "date" is optional (format YYYY-MM-DD). Items are listed oldest first.
  * "group" is optional: items with the same group are shown together
  * under that heading (used below for the three NPTEL courses).
  * Put a course's "materials: []" empty and the page shows
@@ -33,7 +33,7 @@ var COURSES = [
     id: 'bcc',
     title: 'Bankura Christian College',
     role: 'Tutor',
-    place: 'Undergraduate Physics, West Bengal',
+    place: 'Undergraduate Physics · West Bengal, India',
     term: 'Feb 2025 – Present',
     current: true,
     about: '',
@@ -57,7 +57,48 @@ var COURSES = [
       // ---- Mechanics ----
        // { group: 'Mechanics', title: 'Lecture 1: Newtonian mechanics', type: 'notes', file: 'teaching/bcc/mechanics/lecture-01.pdf', date: '2026-11-14' },
         { group: 'Mechanics', title: 'Mocktest-I', type: 'problems', file: 'mocktest_CM.pdf', date: '2026-07-21' },
-        { group: 'Mechanics', title: 'Mocktest-I solutions', type: 'solutions', file: 'mocktest_CM_solutions.pdf', date: '2026-07-28' },
+        { group: 'Mechanics', title: 'Mocktest-I Solutions', type: 'solutions', file: 'mocktest_CM_solutions.pdf', date: '2026-07-28' },
+    ]
+  },
+
+  {
+    id: 'rrths',
+    title: 'Raghunathbari Ramtarak High School',
+    role: 'Tutor',
+    place: 'Class XI & XII Physics · West Bengal, India',
+    term: '2023 – 2024',
+    about: '',
+    materials: [
+      // { title: 'Chapter 1 notes', type: 'notes', file: 'teaching/rrths/chapter-01.pdf', date: '2023-06-01' },
+    ]
+  },
+
+  {
+    id: 'dsav',
+    title: 'Deriachak Sri Aurobindo Vidyamath',
+    role: 'Tutor',
+    place: 'Class XI & XII Physics · West Bengal, India',
+    term: '2023 – 2024',
+    about: '',
+    materials: [
+      // { title: 'Chapter 1 notes', type: 'notes', file: 'teaching/dsav/chapter-01.pdf', date: '2023-06-01' },
+    ]
+  },
+
+  {
+    id: 'sathee',
+    title: 'SATHEE',
+    role: 'Mentor',
+    place: 'Class XII Physics',
+    term: 'Aug – Oct 2023',
+    about: '',
+    groups: [
+      'Class XII: Electric Charges and Fields',
+      'Class XII: Alternating Currents'
+    ],
+    materials: [
+      // { group: 'Class XII: Electric Charges and Fields', title: 'Lecture notes', type: 'notes', file: 'teaching/sathee/electric-charges.pdf', date: '2023-08-15' },
+      // { group: 'Class XII: Alternating Currents', title: 'Lecture notes', type: 'notes', file: 'teaching/sathee/alternating-currents.pdf', date: '2023-10-01' },
     ]
   },
 
@@ -97,6 +138,26 @@ var COURSES = [
       { group: 'Thermal Physics (Jan – Apr 2023)', title: 'Lecture videos (YouTube playlist)', type: 'video', file: 'https://youtube.com/playlist?list=PL3Pnr6ak_w9CI_XbhUJ6ZftAkw7QAK9lH&feature=shared' },
       // { group: 'Thermal Physics (Jan – Apr 2023)', title: 'Supplementary notes', type: 'supplement', file: 'teaching/nptel/thermal2023/supplement-01.pdf', date: '2023-02-01' },
 
+    ]
+  },
+
+  {
+    id: 'iitk',
+    title: 'IIT Kanpur',
+    role: 'Teaching Assistant',
+    place: 'Department of Physics',
+    term: '2022 – Present',
+    current: true,
+    about: '',
+    groups: [
+      'Mathematical Physics (Aug 2026 – Present)',
+      'Particle Physics (Jan – May 2026)',
+      'Graduate Physics Laboratory (Aug 2024 – Nov 2025)',
+      'Undergraduate Physics Laboratory (Nov 2022 – Feb 2023)'
+    ],
+    materials: [
+      // { group: 'Mathematical Physics (Aug 2026 – Present)', title: 'Tutorial 1', type: 'problems', file: 'teaching/iitk/mathphys/tutorial-01.pdf', date: '2026-08-10' },
+      // { group: 'Particle Physics (Jan – May 2026)', title: 'Assignment 1', type: 'problems', file: 'teaching/iitk/particle/assignment-01.pdf', date: '2026-01-20' },
     ]
   },
 

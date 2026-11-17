@@ -47,9 +47,17 @@
       </div>
     </section>
 
-    <!-- ======= Courses (filled from materials.js) ======= -->
-    <div id="tm-courses"></div>
-    <p class="tm-none" id="tm-none" hidden>No materials match your search.</p>
+    <!-- ======= Contents sidebar + materials (filled from materials.js) ======= -->
+    <div class="tm-layout">
+      <aside class="card tm-index" aria-label="Contents">
+        <div class="tm-index-title">Contents</div>
+        <nav id="tm-index"></nav>
+      </aside>
+      <div class="tm-main">
+        <div id="tm-courses"></div>
+        <p class="card tm-none" id="tm-none" hidden>No materials match your search.</p>
+      </div>
+    </div>
 
   </main>
 
@@ -117,12 +125,36 @@
         query = e.target.value.trim().toLowerCase(); render();
       });
 
+      var SYM  = { notes: '&para;', problems: '&sect;', solutions: '&#10003;', slides: '&#9645;',
+                   notebook: '&part;', supplement: '+', video: '&#9654;', other: '&middot;' };
+      var KIND = { notes: 'Lecture notes', problems: 'Problem set', solutions: 'Solutions', slides: 'Slides',
+                   notebook: 'Mathematica notebook', supplement: 'Supplement', video: 'Video lectures', other: 'File' };
+      function slug(x) { return String(x).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''); }
+
+      function itemHTML(m) {
+        var t = TYPES[m.type] ? m.type : 'other';
+        var ext = fileExt(m.file);
+        var external = /^https?:\/\//i.test(m.file);
+        // Files the browser would otherwise show as text (e.g. .nb) are downloaded instead
+        var dl = !external && ['PDF', 'HTML', 'HTM', 'PNG', 'JPG', 'JPEG', 'GIF', 'SVG'].indexOf(ext) === -1;
+        return '<li class="tm-item">' +
+          '<span class="tm-sym" aria-hidden="true">' + SYM[t] + '</span>' +
+          '<a class="tm-link" href="' + esc(m.file) + '"' +
+            (external ? ' target="_blank" rel="noopener"' : '') + (dl ? ' download' : '') + '>' + esc(m.title) + '</a>' +
+          '<span class="tm-dots" aria-hidden="true"></span>' +
+          '<span class="tm-kind">' + KIND[t] + '</span>' +
+          '<span class="tm-meta">' + (m.date ? esc(niceDate(m.date)) + ' &middot; ' : '') + ext + '</span>' +
+        '</li>';
+      }
+
       function render() {
         var filtering = activeType !== 'all' || query;
-        var shown = 0;
-        var html = courses.map(function (c) {
+        var shown = 0, index = [];
+
+        var html = courses.map(function (c, ci) {
+          // Oldest first, like a syllabus (items without a date, e.g. playlists, come first)
           var items = (c.materials || []).slice().sort(function (a, b) {
-            return String(b.date || '').localeCompare(String(a.date || ''));
+            return String(a.date || '').localeCompare(String(b.date || ''));
           }).filter(function (m) {
             var t = m.type || 'other';
             if (activeType !== 'all' && t !== activeType) return false;
@@ -135,21 +167,7 @@
           if (filtering && !items.length) return '';
           shown++;
 
-          function itemHTML(m) {
-            var t = TYPES[m.type] ? m.type : 'other';
-            var ext = fileExt(m.file);
-            var external = /^https?:\/\//i.test(m.file);
-            // Files the browser would otherwise show as text (e.g. .nb) are downloaded instead
-            var dl = !external && ['PDF', 'HTML', 'HTM', 'PNG', 'JPG', 'JPEG', 'GIF', 'SVG'].indexOf(ext) === -1;
-            return '<li class="tm-item">' +
-              '<span class="tm-type t-' + t + '">' + TYPES[t].short + '</span>' +
-              '<a class="tm-link" href="' + esc(m.file) + '"' +
-                (external ? ' target="_blank" rel="noopener"' : '') + (dl ? ' download' : '') + '>' + esc(m.title) + '</a>' +
-              '<span class="tm-meta">' + (m.date ? esc(niceDate(m.date)) + ' &middot; ' : '') + ext + '</span>' +
-            '</li>';
-          }
-
-          // Group items by their "group" (sub-section), keeping the order groups are listed in
+          // Group items by "group", keeping the order of c.groups first
           var groups = [], byGroup = {};
           (c.groups || []).forEach(function (g) { if (!byGroup[g]) { byGroup[g] = []; groups.push(g); } });
           items.forEach(function (m) {
@@ -157,27 +175,29 @@
             if (!byGroup[g]) { byGroup[g] = []; groups.push(g); }
             byGroup[g].push(m);
           });
+          if (filtering) groups = groups.filter(function (g) { return byGroup[g].length; });
 
+          var cid = esc(c.id);
+          var idxGroups = [];
           var list;
-          if (!items.length && !(c.groups || []).length) {
+          if (!groups.length) {
             list = '<p class="tm-empty">Materials will be posted here soon.</p>';
           } else {
             list = groups.map(function (g) {
-              var gi = byGroup[g];
-              if (filtering && !gi.length) return '';
-              return (g ? '<h3 class="tm-group">' + esc(g) + '</h3>' : '') +
+              var gi = byGroup[g], gid = c.id + '-' + slug(g || 'materials');
+              if (g) idxGroups.push({ id: gid, name: g, n: gi.length });
+              return (g ? '<h3 class="tm-group" id="' + esc(gid) + '">' + esc(g) + '</h3>' : '') +
                 (gi.length ? '<ul class="tm-list">' + gi.map(itemHTML).join('') + '</ul>'
                            : '<p class="tm-empty">Materials will be posted here soon.</p>');
             }).join('');
           }
+          index.push({ id: c.id, no: shown, title: c.title, current: c.current, groups: idxGroups });
 
-          return '<section class="card tm-course" id="' + esc(c.id) + '">' +
+          return '<section class="card tm-course" id="' + cid + '">' +
             '<div class="tm-course-head">' +
-              '<div>' +
-                '<h2 class="tm-course-title">' + esc(c.title) + (c.current ? ' <span class="tm-now">Current</span>' : '') + '</h2>' +
-                '<div class="tm-course-meta">' + esc(c.role) + ' &middot; ' + esc(c.place) + '</div>' +
-              '</div>' +
-              '<div class="tm-term">' + esc(c.term) + '</div>' +
+              '<h2 class="tm-course-title"><span class="tm-no">' + shown + '.</span> ' + esc(c.title) +
+                (c.current ? ' <span class="tm-now">Current</span>' : '') + '</h2>' +
+              '<div class="tm-course-meta">' + esc(c.role) + ' &middot; ' + esc(c.place) + ' &middot; ' + esc(c.term) + '</div>' +
             '</div>' +
             (c.about ? '<p class="tm-about">' + esc(c.about) + '</p>' : '') +
             list +
@@ -186,6 +206,46 @@
 
         document.getElementById('tm-courses').innerHTML = html;
         document.getElementById('tm-none').hidden = shown > 0;
+
+        // Contents sidebar: one plain line per place
+        document.getElementById('tm-index').innerHTML = index.length
+          ? '<ol class="tm-toc">' + index.map(function (c) {
+              return '<li><a class="tm-toc-course" href="#' + esc(c.id) + '"><span class="tm-no">' + c.no + '.</span> ' + esc(c.title) + '</a></li>';
+            }).join('') + '</ol>'
+          : '<p class="tm-empty">Nothing to show.</p>';
+
+        watchSections();
+      }
+
+      // Highlight the place you are reading in the Contents sidebar
+      var observer = null, holdUntil = 0;
+      function mark(id) {
+        document.querySelectorAll('#tm-index a').forEach(function (l) {
+          l.classList.toggle('here', l.getAttribute('href') === '#' + id);
+        });
+      }
+      // Clicking a place highlights it straight away
+      document.getElementById('tm-index').addEventListener('click', function (e) {
+        var a = e.target.closest('a'); if (!a) return;
+        mark(a.getAttribute('href').slice(1));
+        holdUntil = Date.now() + 1200;
+      });
+      // At the very bottom of the page, highlight the last place
+      window.addEventListener('scroll', function () {
+        if (Date.now() < holdUntil) return;
+        if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
+          var all = document.querySelectorAll('.tm-course');
+          if (all.length) mark(all[all.length - 1].id);
+        }
+      }, { passive: true });
+      function watchSections() {
+        if (!('IntersectionObserver' in window)) return;
+        if (observer) observer.disconnect();
+        observer = new IntersectionObserver(function (entries) {
+          if (Date.now() < holdUntil) return;
+          entries.forEach(function (e) { if (e.isIntersecting) mark(e.target.id); });
+        }, { rootMargin: '-80px 0px -70% 0px' });
+        document.querySelectorAll('.tm-course').forEach(function (el) { observer.observe(el); });
       }
 
       render();
